@@ -16,7 +16,7 @@ from scipy import misc
 from scipy import linalg
 from PIL import Image
 from skimage import io, img_as_float, img_as_uint
-from skimage.measure import structural_similarity as ssim
+from skimage.measure import compare_ssim as ssim
 import os
 dirori="C:/Users/hespo/OneDrive/Documentos/GitHub/Trab2_DataScience/gs"
 dirdest="C:/Users/hespo/OneDrive/Documentos/GitHub/Trab2_DataScience/gsdiffk"
