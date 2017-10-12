@@ -66,12 +66,12 @@ def cmdscale(D):
 
     return Y, evals
 
-
 dists = []
 cities = []
 for d in data:
     cities.append(d[0])
     dists.append(map(float , d[1:]))
+
 
 adist = np.array(dists)
 print (adist.shape)
@@ -80,10 +80,24 @@ adist /= amax
 print (adist.shape)
 
 mds = manifold.MDS(n_components=2, dissimilarity="precomputed", random_state=6)
+
 results = mds.fit(adist)
-results = results
-coords = results.embedding_
-print (coords)
+coords_aux = results.embedding_
+
+fatlat = 856.6217032112617
+fatlong= 4665.870709846797
+coords=np.zeros((20,2))
+cont = 0
+for i in coords_aux:
+    print (i[0])
+    lat_global = i[1]*fatlat
+    long_global = i[0]*fatlong
+    #print ("x global:"+ str(lat_global))
+    #print ("y global:" + str(long_global))
+    coords[cont][1] = lat_global
+    coords[cont][0] = long_global
+    cont = cont + 1
+
 #coords = 1000 * np.array(results.embedding_)
 plt.subplots_adjust(bottom = 0.1)
 plt.scatter(
